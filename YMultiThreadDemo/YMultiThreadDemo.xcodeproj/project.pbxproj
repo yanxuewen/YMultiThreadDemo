@@ -13,6 +13,8 @@
 		B4CD8F1E218C4A3F00C769DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4CD8F1D218C4A3F00C769DD /* Assets.xcassets */; };
 		B4CD8F21218C4A3F00C769DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4CD8F1F218C4A3F00C769DD /* LaunchScreen.storyboard */; };
 		B4CD8F24218C4A3F00C769DD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B4CD8F23218C4A3F00C769DD /* main.m */; };
+		B4CD8F2D218C4E3B00C769DD /* YGCDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4CD8F2B218C4E3B00C769DD /* YGCDViewController.m */; };
+		B4CD8F2E218C4E3B00C769DD /* YGCDViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4CD8F2C218C4E3B00C769DD /* YGCDViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,9 @@
 		B4CD8F20218C4A3F00C769DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B4CD8F22218C4A3F00C769DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B4CD8F23218C4A3F00C769DD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		B4CD8F2A218C4E3B00C769DD /* YGCDViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YGCDViewController.h; sourceTree = "<group>"; };
+		B4CD8F2B218C4E3B00C769DD /* YGCDViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YGCDViewController.m; sourceTree = "<group>"; };
+		B4CD8F2C218C4E3B00C769DD /* YGCDViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YGCDViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +67,9 @@
 				B4CD8F15218C4A3E00C769DD /* AppDelegate.m */,
 				B4CD8F17218C4A3E00C769DD /* ViewController.h */,
 				B4CD8F18218C4A3E00C769DD /* ViewController.m */,
+				B4CD8F2A218C4E3B00C769DD /* YGCDViewController.h */,
+				B4CD8F2B218C4E3B00C769DD /* YGCDViewController.m */,
+				B4CD8F2C218C4E3B00C769DD /* YGCDViewController.xib */,
 				B4CD8F1A218C4A3E00C769DD /* Main.storyboard */,
 				B4CD8F1D218C4A3F00C769DD /* Assets.xcassets */,
 				B4CD8F1F218C4A3F00C769DD /* LaunchScreen.storyboard */,
@@ -129,6 +137,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B4CD8F21218C4A3F00C769DD /* LaunchScreen.storyboard in Resources */,
+				B4CD8F2E218C4E3B00C769DD /* YGCDViewController.xib in Resources */,
 				B4CD8F1E218C4A3F00C769DD /* Assets.xcassets in Resources */,
 				B4CD8F1C218C4A3E00C769DD /* Main.storyboard in Resources */,
 			);
@@ -142,6 +151,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B4CD8F19218C4A3E00C769DD /* ViewController.m in Sources */,
+				B4CD8F2D218C4E3B00C769DD /* YGCDViewController.m in Sources */,
 				B4CD8F24218C4A3F00C769DD /* main.m in Sources */,
 				B4CD8F16218C4A3E00C769DD /* AppDelegate.m in Sources */,
 			);
