@@ -23,6 +23,9 @@
     [super viewDidLoad];
     self.navigationItem.title = @"Multi Thread";
     _dataArr = @[@"GCD"];
+    
+   
+    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
