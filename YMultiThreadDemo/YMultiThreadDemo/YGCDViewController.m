@@ -16,6 +16,8 @@ static const void * const kDispatchQueueSpecificKey = "kDispatchQueueSpecificKey
 
 @property (strong, nonatomic) NSMutableString *terminalOutputStr;
 
+@property (copy, nonatomic) NSString *testStr;
+
 @end
 
 @implementation YGCDViewController
@@ -23,6 +25,7 @@ static const void * const kDispatchQueueSpecificKey = "kDispatchQueueSpecificKey
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"GCD";
+    _testStr = @"GCD";
     _terminalOutputStr = @"".mutableCopy;
     __weak typeof(self) wself = self;
     dispatch_queue_t mainQueue = dispatch_get_main_queue();
@@ -69,13 +72,13 @@ static const void * const kDispatchQueueSpecificKey = "kDispatchQueueSpecificKey
     });
     
 
-    dispatch_queue_t queue = dispatch_queue_create("queue", DISPATCH_QUEUE_SERIAL);
+    dispatch_queue_t queue = dispatch_queue_create("com.yxw.queue", DISPATCH_QUEUE_SERIAL);
     dispatch_block_t block = dispatch_block_create(0, ^{
         NSLog(@"before block sleep");
         dispatch_async(mainQueue, ^{
             [wself updateTextViewWith:@"before block sleep"];
         });
-        [NSThread sleepForTimeInterval:1.];
+        [NSThread sleepForTimeInterval:2.];
         NSLog(@"after block sleep");
         dispatch_async(mainQueue, ^{
             [wself updateTextViewWith:@"after block sleep"];
@@ -93,6 +96,7 @@ static const void * const kDispatchQueueSpecificKey = "kDispatchQueueSpecificKey
         });
     });
     dispatch_async(queue, block);
+    dispatch_async(queue, block2);
     
     dispatch_async(globalQueue, ^{
         //等待block执行完毕
@@ -102,8 +106,25 @@ static const void * const kDispatchQueueSpecificKey = "kDispatchQueueSpecificKey
             [wself updateTextViewWith:@"block wait coutinue"];
         });
     });
-    dispatch_block_cancel(block2);
+    dispatch_block_notify(block, globalQueue, ^{
+         NSLog(@"block notify coutinue");
+        dispatch_async(mainQueue, ^{
+            [wself updateTextViewWith:@"block notify coutinue"];
+        });
+    });
     
+    dispatch_async(globalQueue, ^{
+        [NSThread sleepForTimeInterval:0.5];
+        dispatch_block_cancel(block2);
+        dispatch_block_cancel(block);
+    });
+    
+    dispatch_block_notify(block2, globalQueue, ^{
+        NSLog(@"block2 notify coutinue");
+        dispatch_async(mainQueue, ^{
+            [wself updateTextViewWith:@"block2 notify coutinue"];
+        });
+    });
     
     dispatch_queue_t dbQueue = dispatch_queue_create("com.yxw.database", DISPATCH_QUEUE_CONCURRENT);
     dispatch_async(dbQueue, ^{
@@ -164,8 +185,43 @@ static const void * const kDispatchQueueSpecificKey = "kDispatchQueueSpecificKey
     
     
     
-    dispatch_block_create(<#dispatch_block_flags_t flags#>, <#^(void)block#>)
-   
+    dispatch_block_t block3 = dispatch_block_create(0, ^{
+        NSLog(@"before block3 sleep");
+        dispatch_async(mainQueue, ^{
+            [wself updateTextViewWith:@"before block3 sleep"];
+        });
+        [NSThread sleepForTimeInterval:1.];
+        NSLog(@"after block3 sleep");
+        dispatch_async(mainQueue, ^{
+            [wself updateTextViewWith:@"after block3 sleep"];
+        });
+    });
+    dispatch_async(globalQueue, block3);
+    dispatch_block_notify(block3, globalQueue, ^{
+        NSLog(@"block3 notify coutinue");
+        dispatch_async(mainQueue, ^{
+            [wself updateTextViewWith:@"block3 notify coutinue"];
+        });
+    });
+    dispatch_async(globalQueue, ^{
+        [NSThread sleepForTimeInterval:3.];
+        block3();
+    });
+    
+    
+    dispatch_group_t group = dispatch_group_create();
+    dispatch_group_async(group,globalQueue,^{ NSLog(@"group block1"); });
+    dispatch_group_async(group,globalQueue,^{ NSLog(@"group block2"); });
+    dispatch_async(globalQueue, ^{
+        dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
+        NSLog(@"group wait done");
+    });
+    dispatch_group_notify(group, globalQueue, ^{
+        NSLog(@"group notify done");
+    });
+    
+    
+    
 }
 
 
