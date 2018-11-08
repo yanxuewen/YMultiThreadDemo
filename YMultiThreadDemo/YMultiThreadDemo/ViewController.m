@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "YGCDViewController.h"
+#import "YOperationViewController.h"
 
 @interface ViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -22,7 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"Multi Thread";
-    _dataArr = @[@"GCD"];
+    _dataArr = @[@"GCD",@"Operation Queue"];
     
    
     
@@ -47,6 +48,9 @@
     if (indexPath.row == 0) {
         YGCDViewController *gcdVC = [[YGCDViewController alloc] init];
         [self.navigationController pushViewController:gcdVC animated:YES];
+    } else if (indexPath.row == 1) {
+        YOperationViewController *operationVC = [[YOperationViewController alloc] init];
+        [self.navigationController pushViewController:operationVC animated:YES];
     }
 }
 
