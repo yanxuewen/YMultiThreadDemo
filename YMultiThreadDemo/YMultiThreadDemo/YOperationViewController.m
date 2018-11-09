@@ -16,14 +16,51 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    dispatch_queue_t globalQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
+    
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
     
     NSLog(@"queue maxConcurrentOperationCount:%zi  activeProcessorCount:%zi",queue.maxConcurrentOperationCount,[NSProcessInfo processInfo].activeProcessorCount);
-    NSLog(@"queue name %@",queue.name);
-    NSLog(@"queue name %@",queue.underlyingQueue);
-    queue.underlyingQueue = dispatch_queue_create("com.yxw.queue1", DISPATCH_QUEUE_SERIAL);
-    NSLog(@"queue name %@",queue.underlyingQueue);
+
     
+    NSBlockOperation *blockOperation = [NSBlockOperation blockOperationWithBlock:^{
+        NSLog(@"block Operation before");
+        [NSThread sleepForTimeInterval:2.];
+        NSLog(@"block Operation end");
+    }];
+    [blockOperation addExecutionBlock:^{
+        NSLog(@"block2 Operation before");
+        [NSThread sleepForTimeInterval:1.];
+        NSLog(@"block2 Operation end");
+    }];
+    [blockOperation addExecutionBlock:^{
+        NSLog(@"block3 Operation before");
+        [NSThread sleepForTimeInterval:3.];
+        NSLog(@"block3 Operation end");
+    }];
+    [queue addOperation:blockOperation];
+    
+    dispatch_async(globalQueue, ^{
+        NSLog(@"block Operation wait");
+        [blockOperation waitUntilFinished];
+        NSLog(@"block all Operation done");
+    });
+    
+    NSString *string = @"abcdefg";
+    NSInvocationOperation *invocationOperation = [[NSInvocationOperation alloc] initWithTarget:self selector:@selector(changeString:) object:string];
+    [queue addOperation:invocationOperation];
+    dispatch_async(globalQueue, ^{
+        [invocationOperation waitUntilFinished];
+        NSLog(@"invocation Operation result:%@",invocationOperation.result);
+    });
+    
+}
+
+- (NSString *)changeString:(NSString *)string{
+    NSLog(@"changeString before");
+    [NSThread sleepForTimeInterval:1.];
+    NSLog(@"changeString end");
+    return string.capitalizedString;
 }
 
 /*
