@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B4891DCB21991BA5005D73CC /* YLockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4891DC921991BA5005D73CC /* YLockViewController.m */; };
+		B4891DCC21991BA5005D73CC /* YLockViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4891DCA21991BA5005D73CC /* YLockViewController.xib */; };
 		B4A216702193E11A00A65741 /* YOperationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4A2166E2193E11A00A65741 /* YOperationViewController.m */; };
 		B4A216712193E11A00A65741 /* YOperationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4A2166F2193E11A00A65741 /* YOperationViewController.xib */; };
 		B4CD8F16218C4A3E00C769DD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B4CD8F15218C4A3E00C769DD /* AppDelegate.m */; };
@@ -20,6 +22,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B4891DC821991BA5005D73CC /* YLockViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YLockViewController.h; sourceTree = "<group>"; };
+		B4891DC921991BA5005D73CC /* YLockViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YLockViewController.m; sourceTree = "<group>"; };
+		B4891DCA21991BA5005D73CC /* YLockViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YLockViewController.xib; sourceTree = "<group>"; };
 		B4A2166D2193E11A00A65741 /* YOperationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YOperationViewController.h; sourceTree = "<group>"; };
 		B4A2166E2193E11A00A65741 /* YOperationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YOperationViewController.m; sourceTree = "<group>"; };
 		B4A2166F2193E11A00A65741 /* YOperationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YOperationViewController.xib; sourceTree = "<group>"; };
@@ -78,6 +83,9 @@
 				B4A2166D2193E11A00A65741 /* YOperationViewController.h */,
 				B4A2166E2193E11A00A65741 /* YOperationViewController.m */,
 				B4A2166F2193E11A00A65741 /* YOperationViewController.xib */,
+				B4891DC821991BA5005D73CC /* YLockViewController.h */,
+				B4891DC921991BA5005D73CC /* YLockViewController.m */,
+				B4891DCA21991BA5005D73CC /* YLockViewController.xib */,
 				B4CD8F1A218C4A3E00C769DD /* Main.storyboard */,
 				B4CD8F1D218C4A3F00C769DD /* Assets.xcassets */,
 				B4CD8F1F218C4A3F00C769DD /* LaunchScreen.storyboard */,
@@ -147,6 +155,7 @@
 				B4CD8F21218C4A3F00C769DD /* LaunchScreen.storyboard in Resources */,
 				B4CD8F2E218C4E3B00C769DD /* YGCDViewController.xib in Resources */,
 				B4A216712193E11A00A65741 /* YOperationViewController.xib in Resources */,
+				B4891DCC21991BA5005D73CC /* YLockViewController.xib in Resources */,
 				B4CD8F1E218C4A3F00C769DD /* Assets.xcassets in Resources */,
 				B4CD8F1C218C4A3E00C769DD /* Main.storyboard in Resources */,
 			);
@@ -164,6 +173,7 @@
 				B4CD8F24218C4A3F00C769DD /* main.m in Sources */,
 				B4A216702193E11A00A65741 /* YOperationViewController.m in Sources */,
 				B4CD8F16218C4A3E00C769DD /* AppDelegate.m in Sources */,
+				B4891DCB21991BA5005D73CC /* YLockViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

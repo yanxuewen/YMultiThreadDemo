@@ -220,10 +220,17 @@ static const void * const kDispatchQueueSpecificKey = "kDispatchQueueSpecificKey
         NSLog(@"group notify done");
     });
     
-    
+    [self dispatchOnceTest];
     
 }
 
+- (void)dispatchOnceTest{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        
+    });
+    NSLog(@"onceToken %zi",onceToken);
+}
 
 - (void)updateTextViewWith:(NSString *)string {
     [_terminalOutputStr appendString:string];
