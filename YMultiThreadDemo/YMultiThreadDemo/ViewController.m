@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "YGCDViewController.h"
 #import "YOperationViewController.h"
+#import "YLockViewController.h"
 
 @interface ViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -23,7 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"Multi Thread";
-    _dataArr = @[@"GCD",@"Operation Queue"];
+    _dataArr = @[@"GCD",@"Operation Queue",@"Lock"];
     
    
     
@@ -51,6 +52,9 @@
     } else if (indexPath.row == 1) {
         YOperationViewController *operationVC = [[YOperationViewController alloc] init];
         [self.navigationController pushViewController:operationVC animated:YES];
+    } else if (indexPath.row == 2) {
+        YLockViewController *lockVC = [[YLockViewController alloc] init];
+        [self.navigationController pushViewController:lockVC animated:YES];
     }
 }
 
